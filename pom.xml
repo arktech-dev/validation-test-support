@@ -1,0 +1,140 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>dev.arktech.validation</groupId>
+    <artifactId>validation-test-support-parent</artifactId>
+
+    <version>0.0.1-SNAPSHOT</version>
+
+    <packaging>pom</packaging>
+
+    <name>Validation Test Support</name>
+    <description>
+        This library gives you helpers to easily test beans using Bean Validation 2.0.
+    </description>
+
+    <url>https://github.com/arktech-dev/ark-bean-validation-test-support</url>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>author</id>
+            <name>Thiago A. de Souza Weber</name>
+            <email>thi.asw@gmail.com</email>
+        </developer>
+    </developers>
+
+    <scm>
+        <developerConnection>scm:git:git@github.com:arktech-dev/ark-bean-validation-test-support.git</developerConnection>
+        <url>scm:git:git@github.com:arktech-dev/ark-bean-validation-test-support.git</url>
+        <connection>scm:git:git@github.com:arktech-dev/ark-bean-validation-test-support.git</connection>
+        <tag>HEAD</tag>
+    </scm>
+
+    <modules>
+        <module>validation-test-support-javax</module>
+        <!--module>validation-test-support-jakarta</module-->
+    </modules>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+            <scope>provided</scope>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
+            <scope>provided</scope>
+            <optional>true</optional>
+        </dependency>
+
+        <!-- TEST -->
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>${hibernate-validator.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator-annotation-processor</artifactId>
+            <version>${hibernate-validator.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+
+        <testResources>
+            <testResource>
+                <directory>src/test/resources</directory>
+                <filtering>true</filtering>
+            </testResource>
+        </testResources>
+
+        <plugins>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <showDeprecation>true</showDeprecation>
+                    <showWarnings>true</showWarnings>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+            </plugin>
+
+        </plugins>
+
+    </build>
+
+    <properties>
+
+        <java.version>11</java.version>
+
+        <console.log.level>DEBUG</console.log.level>
+
+        <slf4j.version>1.7.30</slf4j.version>
+        <logback.version>1.2.3</logback.version>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+        <maven-jar-plugin.version>3.1.2</maven-jar-plugin.version>
+        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
+
+        <javax-validation.version>2.0.1.Final</javax-validation.version>
+        <jakarta-validation.version>2.0.2</jakarta-validation.version>
+
+        <hibernate-validator.version>6.0.18.Final</hibernate-validator.version>
+
+    </properties>
+
+</project>
